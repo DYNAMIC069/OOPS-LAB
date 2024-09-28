@@ -11,3 +11,54 @@
 // used as follows:
 // Area of rectangle = x * y
 // Area of triangle = ½ *x*y
+#include <iostream>
+using namespace std;
+class shape
+{
+public:
+    double x;
+    double y;
+    virtual void get_data(double x, double y) = 0;
+    virtual void display_area() = 0;
+};
+class triangle : public shape
+{
+public:
+    void get_data(double x, double y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+    void display_area()
+    {
+        double area = 0.5 * x * y;
+        cout << "Area: " << area << endl;
+    }
+};
+class rectangle : public shape
+{
+public:
+    void get_data(double x, double y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+    void display_area()
+    {
+        double area = x * y;
+        cout << "Area: " << area << endl;
+    }
+};
+int main()
+{
+    shape *s;
+    triangle t;
+    rectangle r;
+    s = &t;
+    s->get_data(6.5, 7.4);
+    s->display_area();
+    s = &r;
+    s->get_data(9.1, 2.8);
+    s->display_area();
+    return 0;
+}

@@ -13,3 +13,82 @@
 // A's func called 1 times
 // B's func called 1 times
 // C's func called 1 times
+#include <iostream>
+using namespace std;
+class A
+{
+public:
+    static int mulByTwo(int x)
+    {
+        return x * 2;
+    }
+};
+class B
+{
+public:
+    static int mulByThree(int x)
+    {
+        return x * 3;
+    }
+};
+class C
+{
+public:
+    static int mulByFive(int x)
+    {
+        return x * 5;
+    }
+};
+class D
+{
+private:
+    int new_val;
+
+public:
+    int update_val = 1;
+    int count_2 = 0;
+    int count_3 = 0;
+    int count_5 = 0;
+    D(int n)
+    {
+        this->new_val = n;
+    }
+    void calc()
+    {
+        int tmp = new_val;
+        while (tmp % 2 == 0)
+        {
+            this->update_val = A::mulByTwo(this->update_val);
+            this->count_2++;
+            tmp /= 2;
+        }
+        while (tmp % 3 == 0)
+        {
+            this->update_val = B::mulByThree(this->update_val);
+            this->count_3++;
+            tmp /= 3;
+        }
+        while (tmp % 5 == 0)
+        {
+            this->update_val = C::mulByFive(this->update_val);
+            this->count_5++;
+            tmp /= 5;
+        }
+    }
+    void show()
+    {
+        cout << "A called " << count_2 << "times" << endl;
+        cout << "B called " << count_3 << "times" << endl;
+        cout << "C called " << count_5 << "times" << endl;
+        cout << "update value=" << update_val << endl;
+    }
+};
+int main()
+{
+    int n;
+    cin >> n;
+    D d(n);
+    d.calc();
+    d.show();
+    return 0;
+}
