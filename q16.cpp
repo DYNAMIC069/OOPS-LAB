@@ -4,3 +4,67 @@
 // a. Unary –
 // b. Unary ++ preincrement, postincrement
 // c. Unary -- predecrement, postdecrement
+#include <iostream>
+using namespace std;
+class overLoad
+{
+private:
+    int a, b;
+
+public:
+    overLoad(int a, int b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+    friend void operator-(overLoad &obj);
+    friend void operator++(overLoad &obj);
+    friend void operator--(overLoad &obj);
+    friend void operator++(overLoad &obj, int);
+    friend void operator--(overLoad &obj, int);
+    void show()
+    {
+        cout << "a: " << a << " b: " << b << endl;
+    }
+};
+void operator-(overLoad &obj)
+{
+    obj.a = -obj.a;
+    obj.b = -obj.b;
+}
+void operator++(overLoad &obj)
+{
+    obj.a++;
+    obj.b++;
+}
+void operator--(overLoad &obj)
+{
+    obj.a--;
+    obj.b--;
+}
+void operator++(overLoad &obj, int noUse)
+{
+    obj.a++;
+    obj.b++;
+}
+void operator--(overLoad &obj, int noUse)
+{
+    obj.a--;
+    obj.b--;
+}
+int main()
+{
+    overLoad obj(10, 20);
+    obj.show();
+    -obj;
+    obj.show();
+    --obj;
+    obj.show();
+    obj--;
+    obj.show();
+    ++obj;
+    obj.show();
+    obj++;
+    obj.show();
+    return 0;
+}

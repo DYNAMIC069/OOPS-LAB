@@ -10,6 +10,7 @@
 // and display the charges with names
 #include <bits/stdc++.h>
 using namespace std;
+
 class bill
 {
 private:
@@ -22,13 +23,16 @@ public:
     {
         this->name = name;
     }
+
     void setUnits(int units)
     {
         this->units = units;
     }
+
     void getBill()
     {
         int x = this->units;
+
         if (x <= 100)
         {
             this->cost = x * 60;
@@ -39,24 +43,36 @@ public:
         }
         else
         {
-            this->cost = 100 * 60 + 200 * 80 + (x - 300) * 90 + 50;
-            this->cost = this->cost + 0.15 * this->cost;
+            this->cost = 100 * 60 + 200 * 80 + (x - 300) * 90;
         }
         this->cost /= 100;
+
+        if (this->cost < 50)
+        {
+            this->cost += 50;
+        }
+
+        if (this->cost > 300)
+        {
+            this->cost += 0.15 * this->cost;
+        }
     }
+
     void output()
     {
         cout << "name: " << this->name << endl;
         cout << "no of units: " << this->units << endl;
-        cout << "total bill: " << this->cost << endl;
+        cout << "total bill: Rs " << this->cost << endl;
     }
 };
+
 int main()
 {
     int n;
     cout << "enter number of users" << endl;
     cin >> n;
-    bill c1[n];
+    bill c[n];
+
     for (int i = 0; i < n; i++)
     {
         string s;
@@ -65,12 +81,13 @@ int main()
         int x;
         cout << "enter units:" << endl;
         cin >> x;
-        c1[i].setName(s);
-        c1[i].setUnits(x);
-        c1[i].getBill();
+        c[i].setName(s);
+        c[i].setUnits(x);
+        c[i].getBill();
     }
+    cout << "\nElectricity bill details:" << endl;
     for (int i = 0; i < n; i++)
     {
-        c1[i].output();
+        c[i].output();
     }
 }
