@@ -25,19 +25,17 @@
 // 1
 #include <iostream>
 using namespace std;
-
-class xyz
+class student
 {
-
 private:
-    int m[5];
+    int marks[5];
 
 public:
-    void input(int mk[5])
+    void input(int marks[5])
     {
         for (int i = 0; i < 5; i++)
         {
-            m[i] = mk[i];
+            this->marks[i] = marks[i];
         }
     }
     int calculateTotalScore()
@@ -45,18 +43,17 @@ public:
         int totalM = 0;
         for (int i = 0; i < 5; i++)
         {
-            totalM += this->m[i];
+            totalM += this->marks[i];
         }
         return totalM;
     }
 };
-
 int main()
 {
     cout << "no of sudents" << endl;
     int n;
     cin >> n;
-    xyz s[n];
+    student s[n];
     int tmp[5];
     for (int i = 0; i < n; i++)
     {
@@ -69,8 +66,7 @@ int main()
         }
         s[i].input(tmp);
     }
-    int ans = 0;
-    int annaSCore = s[0].calculateTotalScore();
+    int ans = 0, annaSCore = s[0].calculateTotalScore();
     for (int i = 1; i < n; i++)
     {
         int t = s[i].calculateTotalScore();
@@ -79,6 +75,6 @@ int main()
             ans++;
         }
     }
-    cout << ans << endl;
+    cout << "no of students scored more than anna are: " << ans << endl;
     return 0;
 }

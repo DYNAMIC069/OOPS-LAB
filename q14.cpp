@@ -11,31 +11,23 @@ private:
     int img;
 
 public:
-    Complex()
-    {
-        this->img = 0;
-        this->real = 0;
-    }
-    Complex(int r, int i)
-    {
-        this->real = r;
-        this->img = i;
-    }
-    Complex operator+(Complex &d)
+    Complex() : real(0), img(0) {};
+    Complex(int r, int i) : real(r), img(i) {};
+    Complex operator+(const Complex &d)
     {
         Complex temp;
         temp.real = this->real + d.real;
         temp.img = this->img + d.img;
         return temp;
     }
-    Complex operator-(Complex &d)
+    Complex operator-(const Complex &d)
     {
         Complex temp;
         temp.real = this->real - d.real;
         temp.img = this->img - d.img;
         return temp;
     }
-    bool operator==(Complex &d)
+    bool operator==(const Complex &d)
     {
         return this->img == d.img && this->real == d.real;
     }
@@ -47,9 +39,15 @@ public:
 int main()
 {
     Complex d1(7, 5), d2(11, 9);
+    cout << "Complex Number 1:" << endl;
+    d1.show();
+    cout << "Complex Number 2:" << endl;
+    d2.show();
     Complex d3;
+    cout << "Sum:" << endl;
     d3 = d1 + d2;
     d3.show();
+    cout << "Difference:" << endl;
     d3 = d1 - d2;
     d3.show();
     if (d1 == d2)

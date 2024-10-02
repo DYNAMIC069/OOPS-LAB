@@ -14,8 +14,8 @@
 // positive,it should be set to0.0. Write a test application named invoiceTest that
 // demonstrates class Invoice’s capabilities.
 #include <iostream>
-#include <math.h>
 using namespace std;
+
 class invoice
 {
 private:
@@ -32,10 +32,12 @@ public:
         quantity = 0;
         pricePerItem = 0.0;
     }
+
     invoice(string partNumber, string partDescription, int quantity, double pricePerItem)
     {
         this->partNumber = partNumber;
         this->partDescription = partDescription;
+
         if (quantity < 0)
         {
             this->quantity = 0;
@@ -44,94 +46,98 @@ public:
         {
             this->quantity = quantity;
         }
+
         if (pricePerItem < 0)
         {
-            this->pricePerItem = 0;
+            this->pricePerItem = 0.0;
         }
         else
         {
             this->pricePerItem = pricePerItem;
         }
     }
-    void setPartNumber(string x)
+
+    void setPartNumber(string partNumber)
     {
-        this->partNumber = x;
+        this->partNumber = partNumber;
     }
-    void setPartDescription(string x)
-    {
-        this->partDescription = x;
-    }
-    void setQuantity(int x)
-    {
-        if (x < 0)
-        {
-            this->quantity = 0;
-        }
-        else
-        {
-            this->quantity = x;
-        }
-    }
-    void setPricePerItem(double x)
-    {
-        if (x < 0)
-        {
-            this->pricePerItem = 0;
-        }
-        else
-        {
-            this->pricePerItem = x;
-        }
-    }
+
     string getPartNumber()
     {
-        return this->partNumber;
+        return partNumber;
     }
+
+    void setPartDescription(string partDescription)
+    {
+        this->partDescription = partDescription;
+    }
+
     string getPartDescription()
     {
-        return this->partDescription;
+        return partDescription;
     }
-    int getQuantity()
+
+    void setQuantity(int quantity)
     {
-        return this->quantity;
-    }
-    double getPricePerItem()
-    {
-        return this->pricePerItem;
-    }
-    double getInvoiceAmount()
-    {
-        int q = this->quantity;
-        if (q < 0)
+        if (quantity < 0)
         {
             this->quantity = 0;
-            return 0;
         }
-        int p = this->pricePerItem;
-        if (p < 0)
+        else
         {
-            this->pricePerItem = 0;
-            return 0;
+            this->quantity = quantity;
         }
-        return p * q;
+    }
+
+    int getQuantity()
+    {
+        return quantity;
+    }
+
+    void setPricePerItem(double pricePerItem)
+    {
+        if (pricePerItem < 0)
+        {
+            this->pricePerItem = 0.0;
+        }
+        else
+        {
+            this->pricePerItem = pricePerItem;
+        }
+    }
+
+    double getPricePerItem()
+    {
+        return pricePerItem;
+    }
+
+    double getInvoiceAmount()
+    {
+        return quantity * pricePerItem;
     }
 };
 int main()
 {
-    invoice test, test2("QWER3455", "abcbca", 9959, 11.99);
-    test.setPartDescription("xyz");
+    invoice test;
+    invoice test2("QWER3455", "Widget", 9959, 11.99);
+
+    test.setPartDescription("Screwdriver");
     test.setPartNumber("ASD1212FF");
     test.setQuantity(-1050);
     test.setPricePerItem(57.68);
-    cout << test.getPartNumber() << endl;
-    cout << test.getPartDescription() << endl;
-    cout << test.getPricePerItem() << endl;
-    cout << test.getQuantity() << endl;
-    cout << test.getInvoiceAmount() << endl;
-    cout << test2.getPartNumber() << endl;
-    cout << test2.getPartDescription() << endl;
-    cout << test2.getPricePerItem() << endl;
-    cout << test2.getQuantity() << endl;
-    cout << test2.getInvoiceAmount() << endl;
+    cout << "Invoice 1:" << endl;
+    cout << "Part Number: " << test.getPartNumber() << endl;
+    cout << "Part Description: " << test.getPartDescription() << endl;
+    cout << "Price per Item: " << test.getPricePerItem() << endl;
+    cout << "Quantity: " << test.getQuantity() << endl;
+    cout << "Invoice Amount: " << test.getInvoiceAmount() << endl;
+
+    cout << "\nInvoice 2:" << endl;
+    cout << "Part Number: " << test2.getPartNumber() << endl;
+    cout << "Part Description: " << test2.getPartDescription() << endl;
+    cout << "Price per Item: " << test2.getPricePerItem() << endl;
+    cout << "Quantity: " << test2.getQuantity() << endl;
+    cout << "Invoice Amount: " << test2.getInvoiceAmount() << endl;
+
     return 0;
 }

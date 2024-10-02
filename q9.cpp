@@ -5,27 +5,27 @@
 #include <math.h>
 using namespace std;
 
-int Area(int n)
+double Area(double n)
 {
     return n * n;
 }
-int Area(int n, int m)
+double Area(double n, double m)
 {
     return n * m;
 }
-int Area(int n, int m, int l)
+double Area(double n, double m, double l)
 {
-    int s = n + m + l;
+    double s = n + m + l;
     s = s / 2;
     s = (s * (s - n) * (s - m) * (s - l));
-    int ans = sqrt(s);
+    double ans = sqrt(s);
     return ans;
 }
 
 int main()
 {
-    cout << Area(4) << endl;
-    cout << Area(4, 5) << endl;
-    cout << Area(4, 5, 6) << endl;
+    cout << "Area of square: " << Area(4) << endl;
+    cout << "Area of rectangle: " << Area(4, 5) << endl;
+    cout << "Area of triangle: " << Area(4, 5, 6) << endl;
     return 0;
 }

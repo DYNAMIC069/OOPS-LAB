@@ -35,13 +35,18 @@ int main()
     int sum = 0;
     for (int i = 0; i < n; i++)
     {
-        int temp_sum = 0;
-        for (int j = i; j < n; j++)
+        int temp_sum = 0, k = 1, x = i;
+        while (x + k <= n)
         {
-            temp_sum += arr[j];
+            for (int j = 0; j < k; j++)
+            {
+                temp_sum += arr[x + j];
+            }
+            x += k;
+            k++;
         }
         sum = max(sum, temp_sum);
     }
-
+    cout << "Maxmum special sum:" << sum << endl;
     return 0;
 }

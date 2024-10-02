@@ -57,9 +57,12 @@ int main()
     timec t1(15, 45, 30);
     timec t2(16, 23, 49);
     timec t3;
+    cout << "Time 1: ";
     t1.show();
+    cout << "Time 2: ";
     t2.show();
     t1.add(t2, t3);
+    cout << "Added Time: ";
     t3.show();
     return 0;
 }

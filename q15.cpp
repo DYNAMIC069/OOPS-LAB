@@ -49,14 +49,18 @@ public:
 int main()
 {
     overLoad obj(10, 20);
+    cout << "Initial values" << endl;
     obj.show();
     -obj;
+    cout << "After unary -" << endl;
     obj.show();
     --obj;
+    cout << "After unary --" << endl;
     obj.show();
     obj--;
     obj.show();
     ++obj;
+    cout << "After unary ++" << endl;
     obj.show();
     obj++;
     obj.show();
