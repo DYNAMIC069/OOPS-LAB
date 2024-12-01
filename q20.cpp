@@ -7,11 +7,11 @@ class a
 public:
     a()
     {
-        cout << "a class" << endl;
+        cout << "a class constructor" << endl;
     }
     ~a()
     {
-        cout << "a class destructed" << endl;
+        cout << "a class destructer" << endl;
     }
 };
 class b : virtual public a
@@ -19,11 +19,11 @@ class b : virtual public a
 public:
     b()
     {
-        cout << "b class" << endl;
+        cout << "b class constructor" << endl;
     }
     ~b()
     {
-        cout << "b class destructed" << endl;
+        cout << "b class destructer" << endl;
     }
 };
 class c : virtual public a
@@ -31,11 +31,11 @@ class c : virtual public a
 public:
     c()
     {
-        cout << "c class" << endl;
+        cout << "c class constructor" << endl;
     }
     ~c()
     {
-        cout << "c class destructed" << endl;
+        cout << "c class destructer" << endl;
     }
 };
 class d : public b, public c
@@ -43,11 +43,11 @@ class d : public b, public c
 public:
     d()
     {
-        cout << "d class" << endl;
+        cout << "d class constructor" << endl;
     }
     ~d()
     {
-        cout << "d class destructed" << endl;
+        cout << "d class destructer" << endl;
     }
 };
 int main()

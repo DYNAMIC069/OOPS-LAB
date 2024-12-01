@@ -80,7 +80,6 @@ public:
         cout << "A called " << count_2 << "times" << endl;
         cout << "B called " << count_3 << "times" << endl;
         cout << "C called " << count_5 << "times" << endl;
-        cout << "update value=" << update_val << endl;
     }
 };
 int main()
