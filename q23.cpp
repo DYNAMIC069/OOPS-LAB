@@ -31,3 +31,57 @@
 // 9
 // Sample Output
 // result=3
+#include <bits/stdc++.h>
+using namespace std;
+
+int largest_proper_division(int n)
+{
+    if (n == 1 || n == 0)
+    {
+        throw invalid_argument("the largest proper divisor is not defined for n=0");
+        return -1;
+    }
+    if (n == 1)
+    {
+        throw invalid_argument("the largest proper divisor is not defined for n=1");
+        return -1;
+    }
+    if (n % 2 == 0)
+    {
+        return n / 2;
+    }
+    int tmp = n, i = n / 2;
+    for (; i > 0; i--)
+    {
+        if (tmp % i == 0)
+        {
+            break;
+        }
+    }
+    return i;
+}
+void process_input(int n)
+{
+    try
+    {
+        int x;
+        x = largest_proper_division(n);
+        if (x != -1)
+        {
+            cout << "result=" << x << endl;
+        }
+    }
+    catch (invalid_argument err)
+    {
+        cout << err.what() << endl;
+    }
+    cout << "returning control flow to the caller " << endl;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    process_input(n);
+    return 0;
+}

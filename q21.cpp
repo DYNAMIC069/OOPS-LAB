@@ -18,18 +18,17 @@ class shape
 public:
     double x;
     double y;
-    virtual void get_data(double x, double y) = 0;
+    void get_data(double a, double b)
+    {
+        x = a;
+        y = b;
+    }
     virtual void display_area() = 0;
 };
 class triangle : public shape
 {
 public:
-    void get_data(double x, double y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-    void display_area()
+    void display_area() override
     {
         double area = 0.5 * x * y;
         cout << "Area: " << area << endl;
@@ -38,11 +37,6 @@ public:
 class rectangle : public shape
 {
 public:
-    void get_data(double x, double y)
-    {
-        this->x = x;
-        this->y = y;
-    }
     void display_area()
     {
         double area = x * y;

@@ -13,21 +13,21 @@ private:
 public:
     Complex() : real(0), img(0) {};
     Complex(int r, int i) : real(r), img(i) {};
-    Complex operator+(const Complex &d)
+    Complex operator+(Complex &d)
     {
         Complex temp;
         temp.real = this->real + d.real;
         temp.img = this->img + d.img;
         return temp;
     }
-    Complex operator-(const Complex &d)
+    Complex operator-(Complex &d)
     {
         Complex temp;
         temp.real = this->real - d.real;
         temp.img = this->img - d.img;
         return temp;
     }
-    bool operator==(const Complex &d)
+    bool operator==(Complex &d)
     {
         return this->img == d.img && this->real == d.real;
     }
